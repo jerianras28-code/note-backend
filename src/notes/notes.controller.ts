@@ -6,17 +6,17 @@ export class NotesController {
   constructor(private readonly noteService: NotesService) {}
 
   @Get()
-  getnotes(): string {
-    return 'welcome to notes app';
+  getnotes(): string[] {
+    return this.noteService.getNotes();
   }
 
   @Post()
   newNote(@Body() Body: string): any {
-    return Body;
+    return this.noteService.addNote(Body);
   }
 
   @Delete(':id')
   removeNote(@Param('id') id: string): any {
-    return id;
+    return this.noteService.deleteNote(+id);
   }
 }
