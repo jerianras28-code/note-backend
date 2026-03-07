@@ -1,17 +1,18 @@
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { NotesService } from './notes.service';
+import type { Note } from './notes.service';
 
 @Controller('notes')
 export class NotesController {
   constructor(private readonly noteService: NotesService) {}
 
   @Get()
-  getnotes(): string[] {
+  getnotes(): Note[] {
     return this.noteService.getNotes();
   }
 
   @Post()
-  newNote(@Body() Body: string): any {
+  newNote(@Body() Body: Note): any {
     return this.noteService.addNote(Body);
   }
 

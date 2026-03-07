@@ -1,14 +1,19 @@
 import { Injectable } from '@nestjs/common';
 
+export interface Note {
+  title: string;
+  content: string;
+}
+
 @Injectable()
 export class NotesService {
-  noteContainer: Array<string> = [];
+  noteContainer: Array<Note> = [];
 
-  getNotes(): string[] {
+  getNotes(): Note[] {
     return this.noteContainer;
   }
 
-  addNote(props: string): void {
+  addNote(props: Note): void {
     this.noteContainer.push(props);
   }
 
